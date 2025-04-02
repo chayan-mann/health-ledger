@@ -25,14 +25,14 @@ function RecordCard({ record }) {
         <div className="mb-6">
           <p className="text-sm text-gray-500 mb-1">Medical History</p>
           <div className="bg-gray-50 p-3 rounded-md">
-            <p>{record.medicalHistory || "No medical history provided."}</p>
+            <p>{record.medical_history || "No medical history provided."}</p>
           </div>
         </div>
   
         <div>
           <p className="text-sm text-gray-500 mb-1">Current Problem</p>
           <div className="bg-gray-50 p-3 rounded-md">
-            <p>{record.currentProblem}</p>
+            <p>{record.description}</p>
           </div>
         </div>
       </div>

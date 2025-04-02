@@ -119,7 +119,7 @@ function GetRecords() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{record.age}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{record.sex}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 truncate max-w-xs">
-                        {record.currentProblem}
+                        {record.description}
                       </td>
                     </tr>
                   ))}
