@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 // import { toast } from "../components/ui/use-toast";
+import { toast } from "react-hot-toast";
+
 import axios from "axios"; // Import axios
 
 function AddRecord() {
@@ -29,20 +31,27 @@ function AddRecord() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+  
+    const payload = {
+      id: formData.id,
+      name: formData.name,
+      age: Number(formData.age), 
+      sex: formData.sex,
+      medical_history: formData.medicalHistory, 
+      description: formData.currentProblem, // Fix field name
+    };
+    console.log("Payload being sent:", JSON.stringify(payload, null, 2));
 
     try {
-      const response = await axios.post("http://localhost:8000/add-record", formData, {
+      const response = await axios.post("http://localhost:8000/post_record", payload, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-
+  
       if (response.status === 200) {
-        toast({
-          title: "Record added successfully",
-          description: `Patient record for ${formData.name} has been added.`,
-        });
-
+        toast.success(`Patient record for ${formData.name} has been added.`);
+  
         // Reset form
         setFormData({
           id: "",
@@ -52,22 +61,19 @@ function AddRecord() {
           medicalHistory: "",
           currentProblem: "",
         });
-
+  
         navigate("/get-records");
       } else {
         throw new Error("Failed to add record");
       }
     } catch (error) {
-      toast({
-        title: "Error adding record",
-        description: "There was a problem adding the patient record. Please try again.",
-        variant: "destructive",
-      });
+      toast.error("There was a problem adding the patient record. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  
   return (
     <>
       <Header />
@@ -202,7 +208,7 @@ function AddRecord() {
                 <textarea
                   id="currentProblem"
                   name="currentProblem"
-                  value={formData.currentProblem}
+                  value={formData.description}
                   onChange={handleChange}
                   placeholder="Describe the current health issue"
                   rows={4}

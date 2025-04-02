@@ -1,16 +1,11 @@
-
-import React from "react"
-
-import { useState } from "react"
+import React, { createContext, useContext, useState } from "react"
 import { createPortal } from "react-dom"
 import { X } from "lucide-react"
 
-// Create a toast context
-const ToastContext = React.createContext({
-  toast: () => {},
-})
+// Create Toast Context
+const ToastContext = createContext()
 
-export function Toaster() {
+export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([])
 
   const addToast = (toast) => {
@@ -28,56 +23,41 @@ export function Toaster() {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id))
   }
 
-  // Create portal for toasts
-  return createPortal(
+  return (
     <ToastContext.Provider value={{ toast: addToast }}>
-      <div className="fixed bottom-0 right-0 p-4 w-full md:max-w-sm z-50 flex flex-col gap-2">
-        {toasts.map((toast) => (
-          <div
-            key={toast.id}
-            className={`p-4 rounded-md shadow-md flex justify-between items-start ${
-              toast.variant === "destructive"
-                ? "bg-red-100 text-red-800 border-l-4 border-red-500"
-                : "bg-emerald-100 text-emerald-800 border-l-4 border-emerald-500"
-            }`}
-          >
-            <div>
-              {toast.title && <h3 className="font-medium">{toast.title}</h3>}
-              {toast.description && <p className="text-sm">{toast.description}</p>}
+      {children}
+      {createPortal(
+        <div className="fixed bottom-4 right-4 w-full md:max-w-sm z-50 flex flex-col gap-2">
+          {toasts.map((toast) => (
+            <div
+              key={toast.id}
+              className={`p-4 rounded-md shadow-md flex justify-between items-start ${
+                toast.variant === "destructive"
+                  ? "bg-red-100 text-red-800 border-l-4 border-red-500"
+                  : "bg-emerald-100 text-emerald-800 border-l-4 border-emerald-500"
+              }`}
+            >
+              <div>
+                {toast.title && <h3 className="font-medium">{toast.title}</h3>}
+                {toast.description && <p className="text-sm">{toast.description}</p>}
+              </div>
+              <button onClick={() => removeToast(toast.id)} className="text-gray-500 hover:text-gray-700">
+                <X className="h-4 w-4" />
+              </button>
             </div>
-            <button onClick={() => removeToast(toast.id)} className="text-gray-500 hover:text-gray-700">
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-        ))}
-      </div>
-    </ToastContext.Provider>,
-    document.body,
+          ))}
+        </div>,
+        document.body
+      )}
+    </ToastContext.Provider>
   )
 }
 
-// Hook to use toast
+// Custom hook to use toast
 export const useToast = () => {
-  const context = React.useContext(ToastContext)
-  if (context === undefined) {
+  const context = useContext(ToastContext)
+  if (!context) {
     throw new Error("useToast must be used within a ToastProvider")
   }
-  return context
+  return context.toast
 }
-
-// Simplified toast function for use in components
-export const toast = {
-  custom: (props) => {
-    const { toast } = useToast()
-    toast(props)
-  },
-  success: (props) => {
-    const { toast } = useToast()
-    toast({ ...props, variant: "success" })
-  },
-  error: (props) => {
-    const { toast } = useToast()
-    toast({ ...props, variant: "destructive" })
-  },
-}
-
