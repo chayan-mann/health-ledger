@@ -25,8 +25,8 @@ db = client["healthcare"]
 collection = db["records"]
 
 # Connect to Ethereum Blockchain (Sepolia Testnet)
-INFURA_URL = os.getenv("INFURA_URL")
-web3 = Web3(Web3.HTTPProvider(INFURA_URL))
+ALCHEMY_URL = os.getenv("ALCHEMY_URL")
+web3 = Web3(Web3.HTTPProvider(ALCHEMY_URL))
 
 # Smart Contract Details
 CONTRACT_ADDRESS = os.getenv("CONTRACT_ADDRESS")

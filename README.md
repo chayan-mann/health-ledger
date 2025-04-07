@@ -1,5 +1,5 @@
 # Health Ledger
-A decentralized health record management system that leverages blockchain smart contracts for secure and tamper-proof storage of patient data. This project integrates Remix, MetaMask, Infura, FastAPI, and a React frontend to create a robust and transparent health ledger.
+A decentralized health record management system that leverages blockchain smart contracts for secure and tamper-proof storage of patient data. This project integrates Remix, MetaMask, Alchemy, FastAPI, and a React frontend to create a robust and transparent health ledger.
 
 Features 🚀
 ✅ Smart Contract-based Health Ledger - Secure, immutable storage for patient records using Ethereum smart contracts deployed on the Sepolia testnet.
