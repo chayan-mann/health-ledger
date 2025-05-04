@@ -1,5 +1,7 @@
 .env
 
-# Ignore virtual environment folders
-venv/
-env/
+
+
+
+git rm --cached client/.env
+git rm --cached .env
