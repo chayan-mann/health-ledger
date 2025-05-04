@@ -19,7 +19,7 @@ app.add_middleware(
 load_dotenv()
 
 # MongoDB Connection
-MONGO_URI = "mongodb://localhost:27017"  # Change this for MongoDB Atlas
+MONGO_URI = "mongodb://localhost:27017"  
 client = MongoClient(MONGO_URI)
 db = client["healthcare"]
 collection = db["records"]
