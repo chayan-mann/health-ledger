@@ -1,3 +1,5 @@
+.env
+
 # Ignore virtual environment folders
 venv/
 env/
