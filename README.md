@@ -1,36 +1,50 @@
-# Health Ledger
-A decentralized health record management system that leverages blockchain smart contracts for secure and tamper-proof storage of patient data. This project integrates Remix, MetaMask, Alchemy, FastAPI, and a React frontend to create a robust and transparent health ledger.
+# 🩺 Health Ledger
 
-Features 🚀
-✅ Smart Contract-based Health Ledger - Secure, immutable storage for patient records using Ethereum smart contracts deployed on the Sepolia testnet.
-✅ Decentralized Data Integrity - Ensures patient data cannot be altered without consensus.
-✅ User-friendly React UI - Patients and healthcare professionals can add, retrieve, and verify records easily.
-✅ FastAPI Backend - Handles API requests to interact with the blockchain and database efficiently.
-✅ IPFS (Optional) - For decentralized document storage of medical reports.
+**A decentralized health record management system** that leverages blockchain smart contracts to provide secure, tamper-proof storage and seamless access to patient data.
 
-Tech Stack 🛠
-Frontend
-React (Vite + Tailwind CSS)
+This project integrates **Remix, MetaMask, Alchemy, FastAPI**, and a modern **React frontend** to build a transparent and robust health ledger platform.
 
-React Router
+---
 
-Lucide Icons
+## 🚀 Features
 
-MetaMask for Ethereum transactions
+- ✅ **Smart Contract-Based Ledger**  
+  Secure, immutable storage for patient records using Ethereum smart contracts deployed on the **Sepolia testnet**.
 
-Backend
-FastAPI - API service for record management
+- ✅ **Decentralized Data Integrity**  
+  Ensures patient data cannot be altered without network consensus.
 
-MongoDB - Stores metadata of records
+- ✅ **User-Friendly React UI**  
+  Patients and healthcare providers can easily **add, retrieve**, and **verify** health records.
 
-Infura - Ethereum node provider for interacting with smart contracts
+- ✅ **FastAPI Backend**  
+  Efficiently processes API requests, interacting with the blockchain and the database.
 
-Blockchain
-Solidity - Smart contract development
+- ✅ **Optional IPFS Integration**  
+  Decentralized file storage for medical documents such as prescriptions and lab reports.
 
-Remix - Deployed the contract on Sepolia testnet
+---
 
-MetaMask - Wallet for transactions
+## 🧰 Tech Stack
 
-Web3.js / ethers.js - Blockchain interaction
+### 🖥 Frontend
+- ⚛️ **React** (Vite + Tailwind CSS)
+- 🧭 **React Router** – Client-side routing
+- 💎 **Lucide Icons**
+- 🦊 **MetaMask** – Ethereum wallet for blockchain interaction
+
+### 🔧 Backend
+- ⚡ **FastAPI** – High-performance Python API backend
+- 🍃 **MongoDB** – Stores metadata of health records
+- 🌐 **Infura / Alchemy** – Ethereum node providers for interacting with contracts
+
+### ⛓️ Blockchain
+- 🧠 **Solidity** – Smart contract development
+- 🧪 **Remix IDE** – For deploying and testing smart contracts
+- 🦊 **MetaMask** – Transaction signer & wallet
+- 🔗 **Web3.js / ethers.js** – JS libraries for blockchain integration
+
+---
+
+## 🌍 Architecture Overview
 
